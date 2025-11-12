@@ -1,6 +1,19 @@
 # Brazo robótico antropomórfico 🦾
 ## src
 Carpeta principal de este repositorio.
+## Configurar .bash
+```
+# --- Configuración de ROS 2 y Gazebo ---
+source /opt/ros/iron/setup.bash
+source ~/ros2_ws/install/setup.bash
+export PATH=${PATH}:${HOME}/bin
+
+# Rutas de Plugins y Modelos de Gazebo
+export GAZEBO_PLUGIN_PATH=/opt/ros/iron/lib:$GAZEBO_PLUGIN_PATH
+export GAZEBO_MODEL_PATH=/home/oscarss2/ros2_ws/src/xolobot_arm/models:$HOME/.gazebo/models:$GAZEBO_MODEL_PATH # Cambiar oscarss2 si es necesario por el usuario que lo ejecute
+
+```
+
 ---
 # INICAR EL PROYECTO
 
