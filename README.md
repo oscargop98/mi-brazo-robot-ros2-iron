@@ -5,10 +5,12 @@ Carpeta principal de este repositorio.
 # INICAR EL PROYECTO
 
 # TERMINAL 1 - PROYECTO CON LAUNCH
+´´´´
 cd ~/ros2_ws/
 colcon build
 source install/setup.bash
 ros2 launch xolobot_arm xolobot_arm_control.launch.py # Inicia la simulación. Este comando mantendrá esta terminal ocupada
+´´´´
 
 # TERMINAL 2 - EL SERIVIDOR
 cd ~/ros2_ws/
