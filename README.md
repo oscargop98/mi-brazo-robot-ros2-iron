@@ -1,7 +1,46 @@
 # Brazo robótico antropomórfico 🦾
 ## src
 Carpeta principal de este repositorio.
+---
+# INICAR EL PROYECTO
 
+# TERMINAL 1 - PROYECTO CON LAUNCH
+cd ~/ros2_ws/
+colcon build
+source install/setup.bash
+ros2 launch xolobot_arm xolobot_arm_control.launch.py # Inicia la simulación. Este comando mantendrá esta terminal ocupada
+
+# TERMINAL 2 - EL SERIVIDOR
+cd ~/ros2_ws/
+colcon build
+source install/setup.bash
+ros2 run xolobot_arm_server xolobot_arm_server # Como la simulación ya está corriendo, el controller_manager estará activo y te responderá
+
+
+# 3
+cd ~/ros2_ws/
+colcon build
+source install/setup.bash
+ros2 control list_controllers
+
+# Nuevos comandos
+ros2 control list_controllers
+
+ros2 pkg list | grep ros2_control
+    #gazebo_ros2_control
+    #ros2_control
+    #ros2_control_test_assets
+    #ros2_controllers'' 
+ros2 pkg list | grep libgazebo_ros2_control.so 
+
+ros2 pkg list | grep joint_trajectory_controller
+    # joint_trajectory_controller
+
+# Matar los procesos
+pkill -9 gzserver
+pkill -9 gzclient
+pkill -9 gazebo
+---
 ## Comandos
 ### Para lanzar el mundo - ejecutar 
 1. colcon build
