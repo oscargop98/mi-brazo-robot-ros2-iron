@@ -1,0 +1,40 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    joint_trajectory_controller:
+      type: "joint_trajectory_controller/JointTrajectoryController"
+
+joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - jnt_pecho_hombro
+      - jnt_hombro_hombro
+      - jnt_hombro_biceps
+      - jnt_biceps_codo
+      - jnt_codo_antebrazo
+      - jnt_antebrazo_palma
+      - jnt_palma_pulgar_1
+      - jnt_pulgar_1_2
+      - jnt_pulgar_2_3
+
+      - jnt_palma_indice_1
+      - jnt_indice_1_2
+      - jnt_indice_2_3
+
+      - jnt_palma_cordial_1
+      - jnt_cordial_1_2
+      - jnt_cordial_2_3
+
+      - jnt_palma_anular_1
+      - jnt_anular_1_2
+      - jnt_anular_2_3
+
+      - jnt_palma_menique_1
+      - jnt_menique_1_2
+      - jnt_menique_2_3
+    command_interfaces:
+      - position  
+    state_interfaces:
+      - position
+      - velocity

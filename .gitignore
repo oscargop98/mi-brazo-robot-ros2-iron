@@ -1,0 +1,11 @@
+# Ignorar carpetas de compilación y ejecución de ROS
+/build/
+/install/
+/log/
+
+# Ignorar la carpeta de VSCode (opcional pero recomendado)
+.vscode/
+
+# Ignorar archivos temporales de Python
+__pycache__/
+*.pyc

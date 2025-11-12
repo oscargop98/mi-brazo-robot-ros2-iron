@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>xolobot_arm_server</name>
+  <version>0.0.0</version>
+  <description>xolobot_arm_server</description>
+  <maintainer email="monica@example.com">Monica</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>fmt</depend>
+  <depend>gazebo_msgs</depend>
+  <depend>trajectory_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>gazebo_ros</depend>
+  <depend>gazebo_plugins</depend>
+  <depend>gazebo_ros2_control</depend>
+  <depend>linkattacher_msgs</depend>
+
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

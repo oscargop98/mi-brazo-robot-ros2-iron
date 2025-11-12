@@ -1,0 +1,50 @@
+material Xolobot/Aluminio
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        // Relative to the location of the material script
+        texture ./images/blue-metal.jpg
+        // Repeat the texture over the surface (4 per face)
+        scale 1 1
+      }
+    }
+  }
+}
+
+material Xolobot/MetalBarras
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        // Relative to the location of the material script
+        texture ./images/metal-rosa.jpg
+        // Repeat the texture over the surface (4 per face)
+        scale 1 1
+      }
+    }
+  }
+}
+
+material Xolobot/MetalBlanco
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        // Relative to the location of the material script
+        texture ./images/piso-metal-blanco.jpg
+        // Repeat the texture over the surface (4 per face)
+        scale 1 1
+      }
+    }
+  }
+}
