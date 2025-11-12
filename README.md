@@ -4,28 +4,29 @@ Carpeta principal de este repositorio.
 ---
 # INICAR EL PROYECTO
 
-# TERMINAL 1 - PROYECTO CON LAUNCH
-´´´´
-cd ~/ros2_ws/
+## TERMINAL 1 - PROYECTO CON LAUNCH
+```cd ~/ros2_ws/
 colcon build
 source install/setup.bash
 ros2 launch xolobot_arm xolobot_arm_control.launch.py # Inicia la simulación. Este comando mantendrá esta terminal ocupada
-´´´´
-
-# TERMINAL 2 - EL SERIVIDOR
+```
+## TERMINAL 2 - EL SERIVIDOR
+```
 cd ~/ros2_ws/
 colcon build
 source install/setup.bash
 ros2 run xolobot_arm_server xolobot_arm_server # Como la simulación ya está corriendo, el controller_manager estará activo y te responderá
+```
 
-
-# 3
+## Paso 3
+```
 cd ~/ros2_ws/
 colcon build
 source install/setup.bash
 ros2 control list_controllers
-
-# Nuevos comandos
+```
+## Nuevos comandos
+```
 ros2 control list_controllers
 
 ros2 pkg list | grep ros2_control
@@ -42,8 +43,9 @@ ros2 pkg list | grep joint_trajectory_controller
 pkill -9 gzserver
 pkill -9 gzclient
 pkill -9 gazebo
+```
 ---
-## Comandos
+## Comandos Anteriores
 ### Para lanzar el mundo - ejecutar 
 1. colcon build
 2. source install/setup.bash
