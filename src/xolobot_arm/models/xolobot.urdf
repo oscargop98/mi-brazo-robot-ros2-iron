@@ -437,7 +437,7 @@
 
     <ros2_control name="GazeboSystem" type="system">
         <hardware>
-            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
         </hardware>
         <joint name="jnt_pecho_hombro">
             <command_interface name="position"/>

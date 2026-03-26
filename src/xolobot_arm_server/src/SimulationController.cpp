@@ -1,11 +1,11 @@
 #include "SimulationController.h"
 #include "std_msgs/msg/float64.hpp"
 #include <random>
-#include "gazebo_msgs/msg/contacts_state.hpp"
+#include "ros_gz_interfaces/msg/contacts.hpp"
 #include "trajectory_msgs/msg/joint_trajectory.hpp"
 #include "trajectory_msgs/msg/joint_trajectory_point.hpp"
 #include <chrono>
-#include "linkattacher_msgs/srv/attach_link.hpp"
+#include "std_msgs/msg/empty.hpp"
 
 
 SimulationController::SimulationController() : rclcpp::Node("simulation_controller"){
@@ -42,28 +42,30 @@ SimulationController::SimulationController() : rclcpp::Node("simulation_controll
     jointEffortPub = this->create_publisher<std_msgs::msg::Float64>("/effort_controller/command", 10);
 
 
+    attachPub = this->create_publisher<std_msgs::msg::Empty>("/xolobot_arm/attach", 10);
+
     // Suscriptor para bumper palma
-    suscriptorPalma = this ->create_subscription<gazebo_msgs::msg::ContactsState>
+    suscriptorPalma = this ->create_subscription<ros_gz_interfaces::msg::Contacts>
         ("/bumper_states_palma", rclcpp::SensorDataQoS(), std::bind(&SimulationController::deteccionColisionPalma, this, std::placeholders::_1));
 
     // Suscriptor para bumper antebrazo
-    suscriptorAntebrazo= this ->create_subscription<gazebo_msgs::msg::ContactsState>
+    suscriptorAntebrazo= this ->create_subscription<ros_gz_interfaces::msg::Contacts>
         ("/bumper_states_antebrazo", rclcpp::SensorDataQoS(), std::bind(&SimulationController::deteccionColision, this, std::placeholders::_1));
     
     // Suscriptor para dedo pulgar
-    suscriptorPulgar= this ->create_subscription<gazebo_msgs::msg::ContactsState>
+    suscriptorPulgar= this ->create_subscription<ros_gz_interfaces::msg::Contacts>
         ("/bumper_states_pulgar_3", rclcpp::SensorDataQoS(), std::bind(&SimulationController::deteccionColision, this, std::placeholders::_1));
     // Suscriptor para bumper dedo indice
-    suscriptorIndice= this ->create_subscription<gazebo_msgs::msg::ContactsState>
+    suscriptorIndice= this ->create_subscription<ros_gz_interfaces::msg::Contacts>
         ("/bumper_states_indice_3", rclcpp::SensorDataQoS(), std::bind(&SimulationController::deteccionColision, this, std::placeholders::_1));
     // Suscriptor para bumper dedo cordial
-    suscriptorCordial= this ->create_subscription<gazebo_msgs::msg::ContactsState>
+    suscriptorCordial= this ->create_subscription<ros_gz_interfaces::msg::Contacts>
         ("/bumper_states_cordial_3", rclcpp::SensorDataQoS(), std::bind(&SimulationController::deteccionColision, this, std::placeholders::_1));
     // Suscriptor para bumper dedo anular
-    suscriptorAnular= this ->create_subscription<gazebo_msgs::msg::ContactsState>
+    suscriptorAnular= this ->create_subscription<ros_gz_interfaces::msg::Contacts>
         ("/bumper_states_anular_3", rclcpp::SensorDataQoS(), std::bind(&SimulationController::deteccionColision, this, std::placeholders::_1));
     // Suscriptor para bumper dedo menique
-    suscriptorMenique= this ->create_subscription<gazebo_msgs::msg::ContactsState>
+    suscriptorMenique= this ->create_subscription<ros_gz_interfaces::msg::Contacts>
         ("/bumper_states_menique_3", rclcpp::SensorDataQoS(), std::bind(&SimulationController::deteccionColision, this, std::placeholders::_1));
     
     timer_ = this->create_wall_timer(
@@ -76,8 +78,8 @@ SimulationController::SimulationController() : rclcpp::Node("simulation_controll
 }
 SimulationController::~SimulationController() {}
 
-void SimulationController::deteccionColision(const gazebo_msgs::msg::ContactsState::SharedPtr msg){
-    if(!msg->states.empty() && !colisionDetectada){
+void SimulationController::deteccionColision(const ros_gz_interfaces::msg::Contacts::SharedPtr msg){
+    if(!msg->contacts.empty() && !colisionDetectada){
         colisionDetectada = true;
         RCLCPP_WARN(this->get_logger(),"¡Colision detectada!");
         
@@ -89,8 +91,8 @@ void SimulationController::deteccionColision(const gazebo_msgs::msg::ContactsSta
     }
 }
 
-void SimulationController::deteccionColisionPalma(const gazebo_msgs::msg::ContactsState::SharedPtr msg){
-    if(!msg->states.empty() && !colisionDetectada){
+void SimulationController::deteccionColisionPalma(const ros_gz_interfaces::msg::Contacts::SharedPtr msg){
+    if(!msg->contacts.empty() && !colisionDetectada){
         colisionDetectada = true;
         RCLCPP_WARN(this->get_logger(),"¡Colision detectada!");
         agarre_objeto();
@@ -117,34 +119,10 @@ void SimulationController::moverHombro(){
 }
 
 void SimulationController::agarre_objeto(){
-    /*Cliente para el servicio /link_attacher_node/ATTACHLINK
-    envia la solicitud al servidor de servicios*/
-    auto client = this->create_client<linkattacher_msgs::srv::AttachLink>("/link_attacher_node/ATTACHLINK");
-    
-    // Solicitud que se enviara al servicio
-    auto request = std::make_shared<linkattacher_msgs::srv::AttachLink::Request>();
-    request->model1_name = "xolobot_arm";
-    request->link1_name  = "link_palma_izq";
-    request->model2_name = "objeto";
-    request->link2_name  = "link";
-
-    if (!client->wait_for_service(std::chrono::seconds(10))) {
-        RCLCPP_WARN(this->get_logger(), "Servicio de attach no disponible");
-        return;
-    }
-    // Envia la solicitud al servicio 
-    // callback para manejar la respuesta
-    client->async_send_request(request,
-        [this](rclcpp::Client<linkattacher_msgs::srv::AttachLink>::SharedFuture future) {
-            auto response = future.get();
-            if (response->success) {
-                RCLCPP_INFO(this->get_logger(), "Attach correcto: %s", response->message.c_str());
-            } else {
-                RCLCPP_WARN(this->get_logger(), "Attach fallido: %s", response->message.c_str());
-            }
-        });
-    
-    RCLCPP_INFO(this->get_logger(), "Solicitud de attach enviada");
+    /* Publicador para activar el DetachableJoint en Gazebo Harmonic */
+    std_msgs::msg::Empty msg;
+    attachPub->publish(msg);
+    RCLCPP_INFO(this->get_logger(), "Solicitud de attach (DetachableJoint) enviada");
 }
 
 void SimulationController::generaAleatorios(){

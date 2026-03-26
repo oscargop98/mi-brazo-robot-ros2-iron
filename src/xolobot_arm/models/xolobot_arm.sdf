@@ -35,10 +35,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/hombro_alto_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <cylinder><radius>0.05</radius><length>0.10</length></cylinder>
         </geometry>
         <surface>
           <friction>
@@ -121,10 +118,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/hombro_bajo_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <cylinder><radius>0.05</radius><length>0.10</length></cylinder>
         </geometry>
         <surface>
           <friction>
@@ -207,10 +201,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/biceps_izq_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <cylinder><radius>0.04</radius><length>0.20</length></cylinder>
         </geometry>
         <surface>
           <friction>
@@ -293,10 +284,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/codo_izq_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <sphere><radius>0.04</radius></sphere>
         </geometry>
         <surface>
           <friction>
@@ -379,10 +367,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/antebrazo_mano_izq.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.06 0.06 0.20</size></box>
         </geometry>
         <surface>
           <friction>
@@ -435,9 +420,7 @@
         <contact>
           <collision>collision</collision>
         </contact>
-        <plugin name="bumper_plugin_antebrazo" filename="libgazebo_ros_bumper.so">
-          <remapping>bumper_states:=bumper_states_antebrazo</remapping>
-        </plugin>
+        
       </sensor>
     </link>
 
@@ -476,10 +459,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/palma.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.10 0.10 0.03</size></box>
         </geometry>
         <surface>
           <friction>
@@ -532,9 +512,7 @@
         <contact>
           <collision>collision</collision>
         </contact>
-        <plugin name="bumper_plugin_palma" filename="libgazebo_ros_bumper.so">
-          <remapping>bumper_states:=bumper_states_palma</remapping>
-        </plugin>
+        
       </sensor>
     </link>
     
@@ -572,10 +550,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/pulgar_1_izq_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -658,10 +633,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/pulgar_2_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -744,10 +716,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/pulgar_3_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -801,9 +770,7 @@
         <contact>
           <collision>collision</collision>
         </contact>
-        <plugin name="bumper_plugin_pulgar_3" filename="libgazebo_ros_bumper.so">
-          <remapping>bumper_states:=bumper_states_pulgar_3</remapping>
-        </plugin>
+        
       </sensor>
     </link>
     <!--Dedo indice-->
@@ -841,10 +808,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/dedo_indice_1_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -927,10 +891,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/dedo_indice_2_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1013,10 +974,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/dedo_indice_3_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1070,9 +1028,7 @@
         <contact>
           <collision>collision</collision>
         </contact>
-        <plugin name="bumper_plugin_indice_3" filename="libgazebo_ros_bumper.so">
-          <remapping>bumper_states:=bumper_states_indice_3</remapping>
-        </plugin>
+        
       </sensor>
     </link>
     <link name='link_cordial_1_izq'>
@@ -1109,10 +1065,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/dedo_cordial_1_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1195,10 +1148,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/dedo_cordial_2_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1281,10 +1231,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/dedo_cordial_3_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1338,9 +1285,7 @@
         <contact>
           <collision>collision</collision>
         </contact>
-        <plugin name="bumper_plugin_cordial_3" filename="libgazebo_ros_bumper.so">
-          <remapping>bumper_states:=bumper_states_cordial_3</remapping>
-        </plugin>
+        
       </sensor>
     </link>
     <link name='link_anular_1_izq'>
@@ -1377,10 +1322,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/dedo_anular_1_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1463,10 +1405,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/dedo_anular_2_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1549,10 +1488,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/dedo_anular_3_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1606,9 +1542,7 @@
         <contact>
           <collision>collision</collision>
         </contact>
-        <plugin name="bumper_plugin_anular_3" filename="libgazebo_ros_bumper.so">
-          <remapping>bumper_states:=bumper_states_anular_3</remapping>
-        </plugin>
+        
       </sensor>
     </link>
     <link name='link_menique_1_izq'>
@@ -1645,10 +1579,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/dedo_menique_1_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1731,10 +1662,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/dedo_menique_2_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1817,10 +1745,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://meshes/dedos/dedo_menique_3_colision.dae</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box><size>0.02 0.02 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1874,9 +1799,7 @@
         <contact>
           <collision>collision</collision>
         </contact>
-        <plugin name="bumper_plugin_menique_3" filename="libgazebo_ros_bumper.so">
-          <remapping>bumper_states:=bumper_states_menique_3</remapping>
-        </plugin>
+        
       </sensor>
     </link>
 
@@ -2902,13 +2825,18 @@
   <child>link_base</child>
 </joint>
 
-<joint name="fixed_to_ground2" type="fixed">
-  <parent>world</parent>
-  <child>link_pecho</child>
-</joint>
 
-<plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-  <parameters>/home/oscarss2/ros2_ws/install/xolobot_control/share/xolobot_control/config/xolobot_control.yaml</parameters>
+
+<plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+  <parameters>$(find xolobot_control)/config/xolobot_control.yaml</parameters>
+</plugin>
+
+<plugin filename="gz-sim-detachable-joint-system" name="gz::sim::systems::DetachableJoint">
+  <parent_link>link_palma_izq</parent_link>
+  <child_model>objeto</child_model>
+  <child_link>link</child_link>
+  <detach_topic>/xolobot_arm/detach</detach_topic>
+  <attach_topic>/xolobot_arm/attach</attach_topic>
 </plugin>
 <!-- <plugin name="GazeboLinkAttacher" filename="libgazebo_link_attacher.so" />-->
 

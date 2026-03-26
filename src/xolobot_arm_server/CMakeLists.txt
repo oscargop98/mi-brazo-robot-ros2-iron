@@ -4,12 +4,11 @@ project(xolobot_arm_server)
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(fmt REQUIRED) # Para mensajes y logs
-find_package(gazebo_msgs REQUIRED)
 find_package(trajectory_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(gazebo_ros REQUIRED)
-find_package(gazebo_ros2_control REQUIRED)
-find_package(linkattacher_msgs REQUIRED)
+find_package(ros_gz_interfaces REQUIRED)
+find_package(ros_gz_bridge REQUIRED)
+find_package(gz_ros2_control REQUIRED)
 
 
 
@@ -22,12 +21,14 @@ add_executable(xolobot_arm_server
 
 target_link_libraries(${PROJECT_NAME}
   ${rclcpp_LIBRARIES}
-  ${gazebo_msgs_LIBRARIES}
-  ${gazebo_ros_LIBRARIES}
 )
 
 install(TARGETS xolobot_arm_server
   DESTINATION lib/${PROJECT_NAME}
+)
+
+install(DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
 )
 
 install(DIRECTORY include/${PROJECT_NAME}/
@@ -38,11 +39,9 @@ install(DIRECTORY include/${PROJECT_NAME}/
 ament_target_dependencies(xolobot_arm_server
   rclcpp
   fmt
-  gazebo_msgs
   trajectory_msgs
   std_msgs
-  gazebo_ros
-  linkattacher_msgs
+  ros_gz_interfaces
 )
 
 ament_package()
