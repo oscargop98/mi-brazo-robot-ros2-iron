@@ -68,12 +68,10 @@ SimulationController::SimulationController() : rclcpp::Node("simulation_controll
     suscriptorMenique= this ->create_subscription<ros_gz_interfaces::msg::Contacts>
         ("/bumper_states_menique_3", rclcpp::SensorDataQoS(), std::bind(&SimulationController::deteccionColision, this, std::placeholders::_1));
     
-    timer_ = this->create_wall_timer(
+    timer_ = this->create_timer(
         std::chrono::milliseconds(700),
         std::bind(&SimulationController::startTrajectory, this));
 
-    rclcpp::Rate wait_rate(1.0);
-    wait_rate.sleep();
     
 }
 SimulationController::~SimulationController() {}
@@ -85,7 +83,7 @@ void SimulationController::deteccionColision(const ros_gz_interfaces::msg::Conta
         
         if (!temporizadorHombro) {
             RCLCPP_WARN(this->get_logger(),"¡Temporizador creado!");
-            temporizadorHombro = this->create_wall_timer(
+            temporizadorHombro = this->create_timer(
                 std::chrono::seconds(8), std::bind(&SimulationController::moverHombro, this));
         }
     }
@@ -99,7 +97,7 @@ void SimulationController::deteccionColisionPalma(const ros_gz_interfaces::msg::
         
         if (!temporizadorHombro) {
             RCLCPP_WARN(this->get_logger(),"¡Temporizador creado!");
-            temporizadorHombro = this->create_wall_timer(
+            temporizadorHombro = this->create_timer(
                 std::chrono::seconds(8), std::bind(&SimulationController::moverHombro, this));
         }
     }
@@ -131,6 +129,7 @@ void SimulationController::generaAleatorios(){
     rclcpp::Rate rate(2.0);
     
     trajectory_msgs::msg::JointTrajectory jointTrajectoryMsg;
+    jointTrajectoryMsg.header.stamp = this->now();
     jointTrajectoryMsg.joint_names = {"jnt_pecho_hombro", "jnt_hombro_hombro", "jnt_hombro_biceps", 
         "jnt_biceps_codo", "jnt_codo_antebrazo", "jnt_antebrazo_palma", 
         "jnt_palma_pulgar_1", "jnt_pulgar_1_2", "jnt_pulgar_2_3", 
@@ -146,6 +145,11 @@ void SimulationController::generaAleatorios(){
         //jnt_hombro_hoombro
         if(i==1 && colisionDetectada){
             msg.data = jointValues[1];
+        }
+        else if(i==1 && !colisionDetectada){
+            // 43.4 grados calculados trigonométricamente hacia Y=0.25
+            msg.data = 0.758;
+            jointValues[1] = 0.758;
         }
         //jnt_codo_antebrazo
         else if(i==4){
