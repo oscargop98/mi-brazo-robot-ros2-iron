@@ -54,7 +54,7 @@ def generate_launch_description():
         package='ros_gz_sim',
         executable='create',
         name='spawn_lata',
-        arguments=['-file', objeto_path, '-name', 'objeto'],
+        arguments=['-file', objeto_path, '-name', 'objeto', '-x', '0.270909', '-y', '0.256721', '-z', '0.846173'],
         output='screen'
     )
     
@@ -62,7 +62,7 @@ def generate_launch_description():
         package='ros_gz_sim',
         executable='create',
         name='spawn_soporte',
-        arguments=['-file', soporte_path, '-name', 'soporte'],
+        arguments=['-file', soporte_path, '-name', 'soporte', '-x', '0.270909', '-y', '0.256721', '-z', '0.816173'],
         output='screen'
     )
 

@@ -45,7 +45,7 @@ private:
     // Publicador para el controlador de esfuerzo
     rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr jointEffortPub;
     
-    rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr attachPub;
+    rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr attach_pub_;
     
     rclcpp::Subscription<ros_gz_interfaces::msg::Contacts>::SharedPtr suscriptorPalma;
     rclcpp::Subscription<ros_gz_interfaces::msg::Contacts>::SharedPtr suscriptorAntebrazo;

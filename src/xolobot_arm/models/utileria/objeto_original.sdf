@@ -2,49 +2,61 @@
 <sdf version='1.7'>
   <model name='coke_can'>
     <pose>0.270909 0.256721 0.846173 0 0 0</pose>
+    <!--<pose>0.041034 0.078838 0.963914 0 0 0</pose>-->
     <static>false</static>
 
     <link name='link'>
       <inertial>
-        <mass>2.0</mass>
+        <pose>0 0 0.06 0 0 0</pose>
+        <mass>0.10</mass>  <!--Masa de la lata-->
         <inertia>
-          <ixx>0.01</ixx>
+          <ixx>0.00055575</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.01</iyy>
+          <iyy>0.00055575</iyy>
           <iyz>0</iyz>
-          <izz>0.01</izz>
+          <izz>0.0001755</izz>
         </inertia>
       </inertial>
 
       <collision name='collision'>
+        <pose>0 0 0.06 0 0 0</pose>
         <geometry>
-          <box>
-            <size>0.05 0.05 0.12</size>
-          </box>
+          <cylinder>
+            <radius>0.03</radius>
+            <length>0.12</length>
+          </cylinder>
         </geometry>
         <surface>
           <friction>
             <ode>
-              <mu>1.0</mu>
-              <mu2>1.0</mu2>
+              <mu>20</mu>  
+              <mu2>20</mu2>
             </ode>
           </friction>
+          <contact>
+              <kp>1e+07</kp>
+              <kd>1</kd>
+              <min_depth>0.001</min_depth>
+              <max_vel>0.1</max_vel>
+          </contact>
         </surface>
+        <max_contacts>10</max_contacts>
       </collision>
 
       <visual name='visual'>
+        <pose>0 0 0.06 0 0 0</pose>
         <geometry>
-          <box>
-            <size>0.05 0.05 0.12</size>
-          </box>
+          <cylinder>
+            <radius>0.03</radius>
+            <length>0.12</length>
+          </cylinder>
         </geometry>
         <material>
           <ambient>1 0 0 1</ambient>
           <diffuse>1 0 0 1</diffuse>
         </material>
       </visual>
-
       <self_collide>false</self_collide>
       <enable_wind>false</enable_wind>
       <kinematic>false</kinematic>

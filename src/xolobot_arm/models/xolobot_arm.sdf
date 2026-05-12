@@ -67,17 +67,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -150,17 +150,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -233,17 +233,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -316,17 +316,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -399,17 +399,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -459,7 +459,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.10 0.10 0.03</size></box>
+          <box><size>0.06 0.06 0.025</size></box>
         </geometry>
         <surface>
           <friction>
@@ -491,17 +491,17 @@
             <ode>
               <soft_cfm>0.01</soft_cfm>
               <soft_erp>0.8</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0.0001</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -550,7 +550,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -582,17 +582,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -633,7 +633,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -665,17 +665,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -716,7 +716,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -748,17 +748,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -808,7 +808,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -840,17 +840,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -891,7 +891,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -923,17 +923,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -974,7 +974,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1006,17 +1006,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -1065,7 +1065,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1097,17 +1097,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -1148,7 +1148,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1180,17 +1180,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -1231,7 +1231,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1263,17 +1263,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -1322,7 +1322,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1354,17 +1354,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -1405,7 +1405,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1437,17 +1437,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -1488,7 +1488,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1520,17 +1520,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -1579,7 +1579,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1611,17 +1611,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -1662,7 +1662,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1694,17 +1694,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -1745,7 +1745,7 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <box><size>0.02 0.02 0.04</size></box>
+          <box><size>0.012 0.012 0.04</size></box>
         </geometry>
         <surface>
           <friction>
@@ -1777,17 +1777,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -1880,17 +1880,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -1976,17 +1976,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -2070,17 +2070,17 @@
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.001</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+05</kp>
               <kd>1</kd>
             </bullet>
           </contact>
@@ -2105,8 +2105,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>15</damping>
-          <friction>4</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2138,8 +2138,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>12</damping>
-          <friction>3</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2171,8 +2171,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>8</damping>
-          <friction>2</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2196,7 +2196,7 @@
         <xyz>1 0 0</xyz>
         <use_parent_model_frame>0</use_parent_model_frame>
         <limit>
-          <lower>-10</lower>
+          <lower>-3.1416</lower>
           <upper>3.1416</upper>
           <effort>2000</effort>
           <velocity>10000</velocity>
@@ -2204,8 +2204,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>8</damping>
-          <friction>2.0</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2229,16 +2229,16 @@
         <xyz>0 0 1</xyz>
         <use_parent_model_frame>0</use_parent_model_frame>
         <limit>
-          <lower>-1.79769e+308</lower>
-          <upper>1.79769e+308</upper>
+          <lower>-3.1416</lower>
+          <upper>3.1416</upper>
           <effort>8000</effort>
           <velocity>1000</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>10</damping>
-          <friction>2</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2263,16 +2263,16 @@
         <xyz>0 0 1</xyz>
         <use_parent_model_frame>0</use_parent_model_frame>
         <limit>
-          <lower>-1.79769e+308</lower>
-          <upper>1.79769e+308</upper>
+          <lower>-3.1416</lower>
+          <upper>3.1416</upper>
           <effort>8000</effort>
           <velocity>1000</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>10</damping>
-          <friction>2</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2305,8 +2305,8 @@
         <dynamics>
           <spring_reference>0.05</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>5</damping>
-          <friction>1</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2338,8 +2338,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.1</damping>
-          <friction>2</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2371,8 +2371,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.07</damping>
-          <friction>2</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2404,8 +2404,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.7</damping>
-          <friction>10</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2437,8 +2437,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.7</damping>
-          <friction>10</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2470,8 +2470,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.7</damping>
-          <friction>10</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2503,8 +2503,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.7</damping>
-          <friction>10</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2536,8 +2536,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.7</damping>
-          <friction>10</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2569,8 +2569,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.7</damping>
-          <friction>10</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2602,8 +2602,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.7</damping>
-          <friction>10</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2635,8 +2635,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.7</damping>
-          <friction>10</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2668,8 +2668,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.7</damping>
-          <friction>10</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2701,8 +2701,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.7</damping>
-          <friction>10</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2734,8 +2734,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.7</damping>
-          <friction>10</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2767,8 +2767,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.7</damping>
-          <friction>10</friction>
+          <damping>1.0</damping>
+          <friction>0.5</friction>
         </dynamics>
       </axis>
       <physics>
@@ -2831,6 +2831,7 @@
   <parameters>$(find xolobot_control)/config/xolobot_control.yaml</parameters>
 </plugin>
 
+<!-- DetachableJoint DESACTIVADO — disparo fantasma en t=0 por mensaje Empty del bridge
 <plugin filename="gz-sim-detachable-joint-system" name="gz::sim::systems::DetachableJoint">
   <parent_link>link_palma_izq</parent_link>
   <child_model>objeto</child_model>
@@ -2838,6 +2839,7 @@
   <detach_topic>/xolobot_arm/detach</detach_topic>
   <attach_topic>/xolobot_arm/attach</attach_topic>
 </plugin>
+-->
 <!-- <plugin name="GazeboLinkAttacher" filename="libgazebo_link_attacher.so" />-->
 
 </model>
