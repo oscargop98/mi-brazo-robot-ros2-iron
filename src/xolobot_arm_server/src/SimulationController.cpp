@@ -42,7 +42,7 @@ SimulationController::SimulationController() : rclcpp::Node("simulation_controll
     jointEffortPub = this->create_publisher<std_msgs::msg::Float64>("/effort_controller/command", 10);
 
 
-    attachPub = this->create_publisher<std_msgs::msg::Empty>("/xolobot_arm/attach", 10);
+    attach_pub_ = this->create_publisher<std_msgs::msg::Empty>("/xolobot_arm/attach", 10);
 
     // Suscriptor para bumper palma
     suscriptorPalma = this ->create_subscription<ros_gz_interfaces::msg::Contacts>
@@ -69,7 +69,7 @@ SimulationController::SimulationController() : rclcpp::Node("simulation_controll
         ("/bumper_states_menique_3", rclcpp::SensorDataQoS(), std::bind(&SimulationController::deteccionColision, this, std::placeholders::_1));
     
     timer_ = this->create_timer(
-        std::chrono::milliseconds(700),
+        std::chrono::milliseconds(2500),
         std::bind(&SimulationController::startTrajectory, this));
 
     
@@ -77,28 +77,43 @@ SimulationController::SimulationController() : rclcpp::Node("simulation_controll
 SimulationController::~SimulationController() {}
 
 void SimulationController::deteccionColision(const ros_gz_interfaces::msg::Contacts::SharedPtr msg){
-    if(!msg->contacts.empty() && !colisionDetectada){
-        colisionDetectada = true;
-        RCLCPP_WARN(this->get_logger(),"¡Colision detectada!");
-        
-        if (!temporizadorHombro) {
-            RCLCPP_WARN(this->get_logger(),"¡Temporizador creado!");
-            temporizadorHombro = this->create_timer(
-                std::chrono::seconds(8), std::bind(&SimulationController::moverHombro, this));
+    if(colisionDetectada) return;
+    for (const auto & contact : msg->contacts) {
+        const std::string & col1 = contact.collision1.name;
+        const std::string & col2 = contact.collision2.name;
+        bool toca_robot = (col1.find("_izq") != std::string::npos || col2.find("_izq") != std::string::npos);
+        bool toca_lata  = (col1.find("objeto") != std::string::npos || col1.find("coke_can") != std::string::npos ||
+                           col2.find("objeto") != std::string::npos || col2.find("coke_can") != std::string::npos);
+        if (toca_robot && toca_lata) {
+            colisionDetectada = true;
+            RCLCPP_WARN(this->get_logger(), "¡Colision real con lata! [%s / %s]", col1.c_str(), col2.c_str());
+            // agarre_objeto(); // SILENCIADO — diagnóstico de física
+            if (!temporizadorHombro) {
+                temporizadorHombro = this->create_timer(
+                    std::chrono::seconds(8), std::bind(&SimulationController::moverHombro, this));
+            }
+            break;
         }
     }
 }
 
 void SimulationController::deteccionColisionPalma(const ros_gz_interfaces::msg::Contacts::SharedPtr msg){
-    if(!msg->contacts.empty() && !colisionDetectada){
-        colisionDetectada = true;
-        RCLCPP_WARN(this->get_logger(),"¡Colision detectada!");
-        agarre_objeto();
-        
-        if (!temporizadorHombro) {
-            RCLCPP_WARN(this->get_logger(),"¡Temporizador creado!");
-            temporizadorHombro = this->create_timer(
-                std::chrono::seconds(8), std::bind(&SimulationController::moverHombro, this));
+    if(colisionDetectada) return;
+    for (const auto & contact : msg->contacts) {
+        const std::string & col1 = contact.collision1.name;
+        const std::string & col2 = contact.collision2.name;
+        bool toca_robot = (col1.find("_izq") != std::string::npos || col2.find("_izq") != std::string::npos);
+        bool toca_lata  = (col1.find("objeto") != std::string::npos || col1.find("coke_can") != std::string::npos ||
+                           col2.find("objeto") != std::string::npos || col2.find("coke_can") != std::string::npos);
+        if (toca_robot && toca_lata) {
+            colisionDetectada = true;
+            RCLCPP_WARN(this->get_logger(), "¡Colision real con lata (palma)! [%s / %s]", col1.c_str(), col2.c_str());
+            // agarre_objeto(); // SILENCIADO — diagnóstico de física
+            if (!temporizadorHombro) {
+                temporizadorHombro = this->create_timer(
+                    std::chrono::seconds(8), std::bind(&SimulationController::moverHombro, this));
+            }
+            break;
         }
     }
 }
@@ -117,110 +132,55 @@ void SimulationController::moverHombro(){
 }
 
 void SimulationController::agarre_objeto(){
-    /* Publicador para activar el DetachableJoint en Gazebo Harmonic */
     std_msgs::msg::Empty msg;
-    attachPub->publish(msg);
-    RCLCPP_INFO(this->get_logger(), "Solicitud de attach (DetachableJoint) enviada");
+    attach_pub_->publish(msg);
+    RCLCPP_INFO(this->get_logger(), "¡Señal de Attach enviada a Gazebo Harmonic!");
 }
 
 void SimulationController::generaAleatorios(){
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    rclcpp::Rate rate(2.0);
-    
     trajectory_msgs::msg::JointTrajectory jointTrajectoryMsg;
-    jointTrajectoryMsg.header.stamp = this->now();
-    jointTrajectoryMsg.joint_names = {"jnt_pecho_hombro", "jnt_hombro_hombro", "jnt_hombro_biceps", 
-        "jnt_biceps_codo", "jnt_codo_antebrazo", "jnt_antebrazo_palma", 
-        "jnt_palma_pulgar_1", "jnt_pulgar_1_2", "jnt_pulgar_2_3", 
-        "jnt_palma_indice_1", "jnt_indice_1_2", "jnt_indice_2_3", 
-        "jnt_palma_cordial_1", "jnt_cordial_1_2", "jnt_cordial_2_3", 
-        "jnt_palma_anular_1", "jnt_anular_1_2", "jnt_anular_2_3", 
-        "jnt_palma_menique_1", "jnt_menique_1_2", "jnt_menique_2_3"};
+    jointTrajectoryMsg.joint_names = {
+        "jnt_pecho_hombro", "jnt_hombro_hombro", "jnt_hombro_biceps",
+        "jnt_biceps_codo", "jnt_codo_antebrazo", "jnt_antebrazo_palma",
+        "jnt_palma_pulgar_1", "jnt_pulgar_1_2", "jnt_pulgar_2_3",
+        "jnt_palma_indice_1", "jnt_indice_1_2", "jnt_indice_2_3",
+        "jnt_palma_cordial_1", "jnt_cordial_1_2", "jnt_cordial_2_3",
+        "jnt_palma_anular_1", "jnt_anular_1_2", "jnt_anular_2_3",
+        "jnt_palma_menique_1", "jnt_menique_1_2", "jnt_menique_2_3"
+    };
 
     trajectory_msgs::msg::JointTrajectoryPoint point;
 
     for (size_t i = 0; i < TOTAL_JOINTS; ++i){
         std_msgs::msg::Float64 msg;
-        //jnt_hombro_hoombro
-        if(i==1 && colisionDetectada){
-            msg.data = jointValues[1];
+
+        // 1. Alineación Lateral Constante
+        if(i==1){
+            msg.data = 0.758; // 43.4 grados directo hacia la lata
         }
-        else if(i==1 && !colisionDetectada){
-            // 43.4 grados calculados trigonométricamente hacia Y=0.25
-            msg.data = 0.758;
-            jointValues[1] = 0.758;
-        }
-        //jnt_codo_antebrazo
+        // 2. Extensión del Brazo
         else if(i==4){
             msg.data = -1.5708;
         }
-        //jnt_biceps_codo 
         else if (i==3) {
-            /*
-            1.5708
-            4.7124
-            6.2832*/
             msg.data = 1.5708;
         }
-        //jnt_hombro_biceps
+        // 3. Descenso Reactivo Suave (El Eje Z)
         else if(i==2 && !colisionDetectada){
-            bicepMov += -0.087;
+            bicepMov += -0.02; // Descenso más lento y fluido
             msg.data = bicepMov;
         }
         else if(i==2 && colisionDetectada){
-            msg.data = bicepMov;
-            RCLCPP_INFO(this->get_logger(), "Joint %lu. Detenido en: %f",i, msg.data);
+            msg.data = bicepMov; // Freno exacto al chocar
         }
-        // Pulgar (6-7-8)
-        else if(i==6 && colisionDetectada){
-            msg.data = 1.5708; //90°
-        }
-        else if(i==7 && colisionDetectada){
-            msg.data = 0.2094; //12
-        }
-        else if(i==8 && colisionDetectada){
-            msg.data = 0.5236; //30
-        }
-        // Indice (9-10-11)
-        else if(i==9 && colisionDetectada){
-            msg.data = 0.80; // 46
-        }
-        else if(i==10 && colisionDetectada){
-            msg.data = 0.6109; //35
-        }
-        else if(i==11 && colisionDetectada){
-            msg.data = 0.6981; //40
-        }
-        // Cordial (12-13-14)
-        else if(i==12 && colisionDetectada){
-            msg.data = 1.1345; //65
-        }
-        else if(i==13 && colisionDetectada){
-            msg.data = 0.6109; //35
-        }
-        else if(i==14 && colisionDetectada){
-            msg.data = 0.6109; //35
-        }
-        // Anular (15-16-17)
-        else if(i==15 && colisionDetectada){
-            msg.data = 1.1345; //65
-        }
-        else if(i==16 && colisionDetectada){
-            msg.data = 0.6109; //35
-        }
-        else if(i==17 && colisionDetectada){
-            msg.data = 0.6109; //35
-        }
-        // Menique (18-19-20)
-        else if(i==18 && colisionDetectada){
-            msg.data = 0.80;
-        }
-        else if(i==19 && colisionDetectada){
-            msg.data = 0.6109; //35
-        }
-        else if(i==20 && colisionDetectada){
-            msg.data = 0.6109; //35
+        // 4. Agarre al chocar
+        else if(colisionDetectada) {
+            if(i==6) msg.data = 1.5708; else if(i==7) msg.data = 0.2094; else if(i==8) msg.data = 0.5236;
+            else if(i==9) msg.data = 0.80; else if(i==10) msg.data = 0.6109; else if(i==11) msg.data = 0.6981;
+            else if(i==12) msg.data = 1.1345; else if(i==13) msg.data = 0.6109; else if(i==14) msg.data = 0.6109;
+            else if(i==15) msg.data = 1.1345; else if(i==16) msg.data = 0.6109; else if(i==17) msg.data = 0.6109;
+            else if(i==18) msg.data = 0.80; else if(i==19) msg.data = 0.6109; else if(i==20) msg.data = 0.6109;
+            else msg.data = 0.0;
         }
         else{
             msg.data = 0.0;
@@ -228,7 +188,8 @@ void SimulationController::generaAleatorios(){
         point.positions.push_back(msg.data);
     }
 
-    point.time_from_start.sec = 1;
+    // Aumentamos el tiempo a 2 segundos para dar fluidez
+    point.time_from_start.sec = 2;
     jointTrajectoryMsg.points.push_back(point);
     jointTrajectoryPub->publish(jointTrajectoryMsg);
 }
