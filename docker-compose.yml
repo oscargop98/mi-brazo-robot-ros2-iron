@@ -1,0 +1,75 @@
+# ==============================================================
+# Xolobot Arm — Docker Compose
+#
+# Servicios:
+#   sim   → Gazebo + launch completo (Terminal 1)
+#   brain → SimulationController C++ (Terminal 2)
+#
+# Uso:
+#   xhost +local:docker          # habilitar X11 (una vez por sesión)
+#   docker compose build         # construir imagen (primera vez)
+#   docker compose up sim        # T1: lanzar simulación
+#   docker compose run brain     # T2: lanzar controlador
+# ==============================================================
+
+services:
+
+  # ── sim: Gazebo Harmonic + robot + bridge + JTC ──────────────────────────
+  sim:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: xolobot:jazzy
+    container_name: xolobot_sim
+
+    # ROS 2 DDS usa multicast — host network elimina problemas de discovery
+    network_mode: host
+
+    environment:
+      - DISPLAY=${DISPLAY}
+      - XAUTHORITY=/root/.Xauthority
+      - ROS_DOMAIN_ID=0
+      - QT_QPA_PLATFORM=xcb
+
+    volumes:
+      # Socket X11 para ventana de Gazebo en el escritorio del host
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      # Cookie de autenticación X11
+      - /run/user/1000/gdm/Xauthority:/root/.Xauthority:ro
+
+    devices:
+      # GPU via DRI (Mesa/OpenGL — ogre2 de Gazebo)
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card1:/dev/dri/card1
+      # GPU NVIDIA (si el sistema la usa para renderizado)
+      - /dev/nvidia0:/dev/nvidia0
+      - /dev/nvidiactl:/dev/nvidiactl
+      - /dev/nvidia-modeset:/dev/nvidia-modeset
+
+    command: >
+      ros2 launch xolobot_arm xolobot_arm_control.launch.py
+
+    stdin_open: true
+    tty: true
+
+  # ── brain: nodo C++ SimulationController ─────────────────────────────────
+  brain:
+    image: xolobot:jazzy
+    container_name: xolobot_brain
+
+    network_mode: host
+
+    environment:
+      - ROS_DOMAIN_ID=0
+
+    # El brain necesita que Gazebo esté levantado y publicando /clock
+    # El warm-up de 6 ticks en el nodo (15s) absorbe el lag de arranque
+    depends_on:
+      - sim
+
+    command: >
+      ros2 run xolobot_arm_server xolobot_arm_server
+      --ros-args -p use_sim_time:=true
+
+    stdin_open: true
+    tty: true
